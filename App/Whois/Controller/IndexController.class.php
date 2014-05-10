@@ -21,22 +21,52 @@ class IndexController extends Controller
 
     public function searchAction()
     {
-        $domainName = I('DomainName');
-        $domainInfo = new DomainInfo($domainName);
-        $data = $domainInfo->get_all_data();
-        if ($data['registered'] == false)
+        $domainName = I('DomainName', '', '');
+        if (!$domainName)
+            APIE('MissingParam:DomainName');
+
+        $domainInfoModel = new DomainInfoModel;
+        $where['name'] = $domainName;
+        $DI = $domainInfoModel->where($where)->find();
+        if ($DI)
         {
-            $sqlData['is_registered'] = 'N';
+            if ((time() - intval($DI['update_time'])) > 3600*24*7)
+            {
+                $domainInfo = new DomainInfo($domainName);
+                $data = $domainInfo->get_all_data();
+                if ($data['registered'] == false)
+                {
+                    $sqlData['is_registered'] = 'N';
+                }
+                else
+                {
+                    $sqlData['is_registered'] = 'Y';
+                }
+                $sqlData['name'] = $data['domain_name'];
+                $sqlData['update_time'] = time();
+                $domainInfoModel->apiUpdate($sqlData, $where);
+                return ($data);
+            }
+            return $DI;
         }
         else
         {
-            $sqlData['is_registered'] = 'Y';
+            $domainInfo = new DomainInfo($domainName);
+            $data = $domainInfo->get_all_data();
+            if ($data['registered'] == false)
+            {
+                $sqlData['is_registered'] = 'N';
+            }
+            else
+            {
+                $sqlData['is_registered'] = 'Y';
+            }
+            $sqlData['name'] = $data['domain_name'];
+            $sqlData['create_time'] = time();
+            $sqlData['update_time'] = time();
+            $domainInfoModel->apiCreate($sqlData, true);
+            echo ($domainInfoModel->getLastSql());
+            return ($data);
         }
-        $sqlData['name'] = $data['domain_name'];
-        $sqlData['create_time'] = time();
-        $sqlData['update_time'] = 0;
-        $domainInfoModel = new DomainInfoModel();
-        $domainInfoModel->apiCreate($sqlData);
-        return ($data);
     }
 }

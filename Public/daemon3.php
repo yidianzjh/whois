@@ -38,7 +38,7 @@ while (1)
     /******daemon******/
     $letterArr = array('a','b','c','d','e','f','g','h','i','j','k',
         'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-    $domainSuffixArr = array('.com','.net','.org','.cc');
+    $domainSuffixArr = array('.com','.net','.org','.cc','.co');
 //    ,'.cn','.info','.biz','.gg','.bb','.ee');
     foreach ($letterArr as $domainName_1)
     {
@@ -58,5 +58,4 @@ while (1)
     }
 
     exit;
-    sleep(5); // 休眠1分钟
 }

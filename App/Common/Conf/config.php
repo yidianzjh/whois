@@ -25,4 +25,8 @@ return array(
     'DB_PWD'    => 'whois_base', // 密码
     'DB_PORT'   => 3306, // 端口
     'DB_PREFIX' => '', // 数据库表前缀
+
+    'AUTOLOAD_NAMESPACE' => array(
+        'Novutec' => APP_PATH.'../Novutec',    // 自动加载Novutec类库
+    ),
 );

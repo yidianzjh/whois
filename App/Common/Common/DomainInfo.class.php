@@ -2,6 +2,8 @@
 
 namespace Common\Common;
 
+use Novutec\WhoisParser\Parser;
+
 class DomainInfo
 {
     private $timeout;
@@ -24,9 +26,12 @@ class DomainInfo
         $domain_name = $p_domain_name;
         if( !empty($domain_name) )
         {
-            $pageURL = "http://whoisproxy.alichacha.com/?domain_name=".rawurlencode($domain_name);
-            $this->result_string = $this->_url($pageURL);
-            $this->result = json_decode($this->result_string);
+            $parser = new Parser;
+            $parser->setFormat('object');
+            $this->result = $parser->lookup($domain_name);
+//            $pageURL = "http://whoisproxy.alichacha.com/?domain_name=".rawurlencode($domain_name);
+//            $this->result_string = $this->_url($pageURL);
+//            $this->result = json_decode($this->result_string);
 
         }
 
