@@ -5,8 +5,9 @@ namespace Whois\Controller;
 use Com\Quyun\Api\Controller;
 use Common\Common\DomainInfo;
 use Whois\Model\DomainInfoModel;
+use Whois\Model\DomainInfoComModel;
 
-class IndexController extends Controller
+class SearchController extends Controller
 {
     public function indexAction()
     {
@@ -25,7 +26,13 @@ class IndexController extends Controller
         if (!$domainName)
             APIE('MissingParam:DomainName');
 
-        $domainInfoModel = new DomainInfoModel;
+        $n = strrpos($domainName, '.');
+        $domainPrefix = substr($domainName, 0, $n);
+        $domainSuffix = substr($domainName, $n+1);
+        var_dump($domainPrefix);
+        var_dump($domainSuffix);
+        $domainInfoModelName = 'DomainInfo'.ucfirst($domainSuffix).'Model';
+        $domainInfoModel = new $domainInfoModelName();
         $where['name'] = $domainName;
         $DI = $domainInfoModel->where($where)->find();
         if ($DI)

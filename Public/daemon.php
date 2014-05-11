@@ -38,8 +38,8 @@ while (1)
     /******daemon******/
     $letterArr = array('a','b','c','d','e','f','g','h','i','j','k',
         'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-    $domainSuffixArr = array('.com','.net','.org','.cc','.co');
-//    ,'.cn','.info','.biz','.gg','.bb','.ee');
+    $domainSuffixArr = array('.lc','.gl',);
+//    '.com','.net','.org','.cc','.co','.info','.biz','.ee','.cn','.gg','.bb',);
     foreach ($letterArr as $domainName_1)
     {
         foreach ($letterArr as $domainName_2)
@@ -48,7 +48,7 @@ while (1)
             {
                 $domainName = $domainName_1.$domainName_2.$domainSuffix;
                 $publicParams['DomainName'] = $domainName;
-                $publicParams['api_action'] = 'Whois.Index.Search';
+                $publicParams['api_action'] = 'Whois.Search.Search';
                 curl($publicParams);
             }
         }

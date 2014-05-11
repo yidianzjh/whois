@@ -50,7 +50,7 @@ while (1)
                 {
                     $domainName = $domainName_1.$domainName_2.$domainName_3.$domainSuffix;
                     $publicParams['DomainName'] = $domainName;
-                    $publicParams['api_action'] = 'Whois.Index.Search';
+                    $publicParams['api_action'] = 'Whois.Search.Search';
                     curl($publicParams);
                 }
             }

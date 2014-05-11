@@ -36,11 +36,12 @@ while (1)
 
     $letterArr = array('a','b','c','d','e','f','g','h','i','j','k',
     'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+    $wordArr = array('yun','cloud','music','video','photo','picture');
     $digitArr = array('0','1','2','3','4','5','6','7','8','9');
-    $domainSuffixArr = array('.com','.net','.org','.cc','.co');
+    $domainSuffixArr = array('.com','.net','.org','.cc','.co','.info','.biz');
     //    ,'.cn','.info','.biz','.gg','.bb','.ee');
 
-    searchDomain('', 1, 4, $digitArr, $domainSuffixArr);
+    searchDomain('', 1, 2, array_merge($letterArr, $wordArr), $domainSuffixArr);
     exit;
 }
 
