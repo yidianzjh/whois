@@ -42,7 +42,7 @@ while (1)
     //    ,'.cn','.info','.biz','.gg','.bb','.ee');
     $charArr = array_merge($letterArr, $wordArr);
     shuffle($charArr);
-    shuffle($domainSuffix);
+    shuffle($domainSuffixArr);
     searchDomain('', 1, 2, $charArr, $domainSuffixArr);
     exit;
 }

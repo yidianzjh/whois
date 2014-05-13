@@ -41,7 +41,7 @@ while (1)
     $domainSuffixArr = array('.com','.net','.org','.cc','.co');
     $charArr = $letterArr;
     shuffle($charArr);
-    shuffle($domainSuffix);
+    shuffle($domainSuffixArr);
 //    ,'.cn','.info','.biz','.gg','.bb','.ee');
     foreach ($charArr as $domainName_1)
     {

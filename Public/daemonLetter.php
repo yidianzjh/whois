@@ -41,7 +41,7 @@ while (1)
     //    ,'.cn','.info','.biz','.gg','.bb','.ee');
     $charArr = $letterArr;
     shuffle($charArr);
-    shuffle($domainSuffix);
+    shuffle($domainSuffixArr);
     searchDomain('', 1, 4, $charArr, $domainSuffixArr);
     exit;
 }
