@@ -40,8 +40,10 @@ while (1)
     $digitArr = array('0','1','2','3','4','5','6','7','8','9');
     $domainSuffixArr = array('.com','.net','.org','.cc','.co','.info','.biz');
     //    ,'.cn','.info','.biz','.gg','.bb','.ee');
-
-    searchDomain('', 1, 2, array_merge($letterArr, $wordArr), $domainSuffixArr);
+    $charArr = array_merge($letterArr, $wordArr);
+    shuffle($charArr);
+    shuffle($domainSuffix);
+    searchDomain('', 1, 2, $charArr, $domainSuffixArr);
     exit;
 }
 

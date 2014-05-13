@@ -40,13 +40,16 @@ while (1)
         'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
     $domainSuffixArr = array('.com','.net','.org','.cc','.co','.co');
 //    ,'.cn','.info','.biz','.gg','.bb','.ee');
-    foreach ($letterArr as $domainName_1)
+    $charArr = $letterArr;
+    shuffle($charArr);
+    shuffle($domainSuffix);
+    foreach ($charArr as $domainName_1)
     {
-        foreach ($letterArr as $domainName_2)
+        foreach ($charArr as $domainName_2)
         {
-            foreach ($letterArr as $domainName_3)
+            foreach ($charArr as $domainName_3)
             {
-                foreach ($letterArr as $domainName_4)
+                foreach ($charArr as $domainName_4)
                 {
                     foreach ($domainSuffixArr as $domainSuffix)
                     {

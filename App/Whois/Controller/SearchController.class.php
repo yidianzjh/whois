@@ -27,11 +27,9 @@ class SearchController extends Controller
             APIE('MissingParam:DomainName');
 
         $n = strrpos($domainName, '.');
-        $domainPrefix = substr($domainName, 0, $n);
+//        $domainPrefix = substr($domainName, 0, $n);
         $domainSuffix = substr($domainName, $n+1);
-        var_dump($domainPrefix);
-        var_dump($domainSuffix);
-        $domainInfoModelName = 'DomainInfo'.ucfirst($domainSuffix).'Model';
+        $domainInfoModelName = 'Whois\Model\DomainInfo'.ucfirst($domainSuffix).'Model';
         $domainInfoModel = new $domainInfoModelName();
         $where['name'] = $domainName;
         $DI = $domainInfoModel->where($where)->find();
