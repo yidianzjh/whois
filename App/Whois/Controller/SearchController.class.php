@@ -73,4 +73,15 @@ class SearchController extends Controller
             return ($data);
         }
     }
+
+    public function search2Action()
+    {
+        $domainName = I('DomainName', '', '');
+        if (!$domainName)
+            APIE('MissingParam:DomainName');
+
+        $domainInfo = new DomainInfo($domainName);
+        $data = $domainInfo->get_all_data();
+        return ($data);
+    }
 }
