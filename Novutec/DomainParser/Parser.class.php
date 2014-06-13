@@ -183,6 +183,8 @@ class Parser
      */
     public function parse($unparsedString, $defaultTld = 'com')
     {
+var_dump($unparsedString);
+var_dump($defaultTld);
         try {
             if ($this->loaded === false) {
                 $this->load();
@@ -266,7 +268,8 @@ class Parser
             $Result = new Result();
             $Result->error = $e->getMessage();
         }
-
+var_dump('Result_____________________________');
+var_dump($Result);
         return $Result->get($this->format);
     }
 

@@ -268,6 +268,9 @@ var_dump($this->Query);
             $this->Query = new \stdClass();
             $this->Query->asn = $query;
         } else {
+
+var_dump('2222222222222222222222222222');
+var_dump($this->Query);
             $Parser = new \Novutec\DomainParser\Parser();
             $this->Query = $Parser->parse(filter_var($query, FILTER_SANITIZE_STRING));
         }
