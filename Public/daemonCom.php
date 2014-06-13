@@ -43,7 +43,7 @@ while (1)
     $charArr = $letterArr;
     shuffle($charArr);
 //    shuffle($domainSuffixArr);
-    searchDomain('', 5, 5, $charArr, $domainSuffixArr);
+    searchDomain('', 1, 5, $charArr, $domainSuffixArr);
     exit;
 }
 
