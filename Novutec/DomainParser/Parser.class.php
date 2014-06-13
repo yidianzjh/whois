@@ -201,9 +201,11 @@ var_dump($defaultTld);
 
             preg_match('/^((http|https|ftp|ftps|news|ssh|sftp|gopher):[\/]{2,})?([^\/]+)/', mb_strtolower(trim($unparsedString), $this->encoding), $matches);
             $parsedString = $IdnaConverter->encode(end($matches));
-
+var_dump($matches);
+var_dump($parsedString);
             foreach ($this->tldList['content'] as $tldgroup => $tlds) {
                 foreach ($tlds as $tld) {
+var_dump($tld);
                     if (preg_match('/\.' . $tld . '$/', $parsedString, $trash)) {
                         $matchedTld = $tld;
                         $matchedTldIdn = $IdnaConverter->encode($tld);
