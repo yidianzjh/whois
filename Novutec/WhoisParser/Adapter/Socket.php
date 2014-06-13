@@ -77,7 +77,8 @@ class Socket extends AbstractAdapter
             throw \Novutec\WhoisParser\AbstractException::factory('WriteError', 'Error while sending data (' .
                      $send . '/' . strlen($lookupString . "\r\n") . ')');
         }
-
+var_dump($this->sock);
+exit;
         $read = $write = array($this->sock);
         $except = null;
         $rawdata = '';
