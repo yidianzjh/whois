@@ -342,6 +342,7 @@ var_dump('77777777777777777777777777777777777777');
         $content = @file_get_contents($this->tldUrl);
 var_dump('file_get_contents_________________________________________');
 var_dump($this->tldUrl);
+var_dump($content);
         if ($content === false) {
             if (! $existFile) {
 var_dump('999999999999999999999999999999999999999999999');
