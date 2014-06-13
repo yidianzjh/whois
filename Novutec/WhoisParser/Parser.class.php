@@ -180,6 +180,8 @@ class Parser
 	 */
     public function lookup($query = '')
     {
+var_dump($query);
+var_dump($this->Query);
         $this->Result = new Result();
         $this->Config = new Config($this->specialWhois);
         
@@ -189,7 +191,8 @@ class Parser
             }
             
             $this->prepare($query);
-            
+var_dump('1111111111111111111111111');
+var_dump($this->Query);
             if (isset($this->Query->ip)) {
                 $config = $this->Config->get('iana');
             } else {
@@ -279,13 +282,14 @@ class Parser
 	 */
     public function call($query = '')
     {
+var_dump($this->Query);
         if ($query != '') {
             $this->Query = filter_var($query, FILTER_SANITIZE_STRING);
         }
         
         $Config = $this->Config->getCurrent();
         $Adapter = AbstractAdapter::factory($Config['adapter']);
-        
+var_dump($this->Query);
         if ($Adapter instanceof AbstractAdapter) {
             $this->rawdata = strip_tags($Adapter->call($this->Query, $Config));
             $this->parse();

@@ -60,7 +60,7 @@ class Socket extends AbstractAdapter
         $this->connect($config);
 
         stream_set_blocking($this->sock, 1);
-
+var_dump($query);
         if (isset($query->tld) && ! isset($query->idnFqdn)) {
             $lookupString = str_replace('%domain%', $query->tld, $config['format']);
         } elseif (isset($query->ip)) {
