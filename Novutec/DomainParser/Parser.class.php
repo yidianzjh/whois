@@ -309,10 +309,12 @@ var_dump($Result);
             $file = fopen($filename, 'w+');
 
             if ($file === false) {
+var_dump('666666666666666666666666666666');
                 throw \Novutec\DomainParser\AbstractException::factory('OpenFile', 'Could not open cache file.');
             }
 
             if (fwrite($file, serialize($this->tldList)) === false) {
+var_dump('77777777777777777777777777777777777777');
                 throw \Novutec\DomainParser\AbstractException::factory('WriteFile', 'Could not open cache file for writing.');
             }
 
