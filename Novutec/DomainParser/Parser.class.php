@@ -286,7 +286,8 @@ var_dump($Result);
     private function load()
     {
         $filename = $this->path . '/domainparsertld.txt';
-
+var_dump('filename______________________________');
+var_dump($filename);
         if (file_exists($filename)) {
             $this->tldList = unserialize(file_get_contents($filename));
 
