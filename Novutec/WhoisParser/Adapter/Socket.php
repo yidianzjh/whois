@@ -77,8 +77,7 @@ class Socket extends AbstractAdapter
             throw \Novutec\WhoisParser\AbstractException::factory('WriteError', 'Error while sending data (' .
                      $send . '/' . strlen($lookupString . "\r\n") . ')');
         }
-var_dump($this->sock);
-exit;
+
         $read = $write = array($this->sock);
         $except = null;
         $rawdata = '';
@@ -89,7 +88,7 @@ exit;
             }
 
             $recv = stream_get_contents($this->sock);
-
+var_dump($recv);exit;
             if ($recv === false) {
                 throw \Novutec\WhoisParser\AbstractException::factory('ReadError', 'Could not read from socket.');
             }
