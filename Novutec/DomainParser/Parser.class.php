@@ -183,8 +183,6 @@ class Parser
      */
     public function parse($unparsedString, $defaultTld = 'com')
     {
-var_dump($unparsedString);
-var_dump($defaultTld);
         try {
             if ($this->loaded === false) {
                 $this->load();
@@ -201,12 +199,9 @@ var_dump($defaultTld);
 
             preg_match('/^((http|https|ftp|ftps|news|ssh|sftp|gopher):[\/]{2,})?([^\/]+)/', mb_strtolower(trim($unparsedString), $this->encoding), $matches);
             $parsedString = $IdnaConverter->encode(end($matches));
-var_dump($matches);
-var_dump($parsedString);
-var_dump($this->tldList['content']);
+
             foreach ($this->tldList['content'] as $tldgroup => $tlds) {
                 foreach ($tlds as $tld) {
-var_dump($tld);
                     if (preg_match('/\.' . $tld . '$/', $parsedString, $trash)) {
                         $matchedTld = $tld;
                         $matchedTldIdn = $IdnaConverter->encode($tld);
@@ -267,12 +262,11 @@ var_dump($tld);
             if ($this->throwExceptions) {
                 throw $e;
             }
-var_dump('333333333333333333333333333333333333333333333');
+
             $Result = new Result();
             $Result->error = $e->getMessage();
         }
-var_dump('Result_____________________________');
-var_dump($Result);
+
         return $Result->get($this->format);
     }
 
@@ -286,8 +280,7 @@ var_dump($Result);
     private function load()
     {
         $filename = $this->path . '/domainparsertld.txt';
-var_dump('filename______________________________');
-var_dump($filename);
+
         if (file_exists($filename)) {
             $this->tldList = unserialize(file_get_contents($filename));
 
@@ -310,12 +303,10 @@ var_dump($filename);
             $file = fopen($filename, 'w+');
 
             if ($file === false) {
-var_dump('666666666666666666666666666666');
                 throw \Novutec\DomainParser\AbstractException::factory('OpenFile', 'Could not open cache file.');
             }
 
             if (fwrite($file, serialize($this->tldList)) === false) {
-var_dump('77777777777777777777777777777777777777');
                 throw \Novutec\DomainParser\AbstractException::factory('WriteFile', 'Could not open cache file for writing.');
             }
 
@@ -341,12 +332,9 @@ var_dump('77777777777777777777777777777777777777');
     private function catchTlds($existFile)
     {
         $content = @file_get_contents($this->tldUrl);
-var_dump('file_get_contents_________________________________________');
-var_dump($this->tldUrl);
-var_dump($content);
+
         if ($content === false) {
             if (! $existFile) {
-var_dump('999999999999999999999999999999999999999999999');
                 throw \Novutec\DomainParser\AbstractException::factory('Connect', 'Could not catch file from server.');
             }
 

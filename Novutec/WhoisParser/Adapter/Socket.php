@@ -60,7 +60,7 @@ class Socket extends AbstractAdapter
         $this->connect($config);
 
         stream_set_blocking($this->sock, 1);
-var_dump($query);
+
         if (isset($query->tld) && ! isset($query->idnFqdn)) {
             $lookupString = str_replace('%domain%', $query->tld, $config['format']);
         } elseif (isset($query->ip)) {
@@ -70,7 +70,7 @@ var_dump($query);
         } else {
             $lookupString = str_replace('%domain%', $query->idnFqdn, $config['format']);
         }
-var_dump($lookupString);
+
         $send = fwrite($this->sock, $lookupString . "\r\n");
 
         if ($send !== strlen($lookupString . "\r\n")) {
@@ -88,7 +88,7 @@ var_dump($lookupString);
             }
 
             $recv = stream_get_contents($this->sock);
-var_dump($recv);exit;
+
             if ($recv === false) {
                 throw \Novutec\WhoisParser\AbstractException::factory('ReadError', 'Could not read from socket.');
             }
