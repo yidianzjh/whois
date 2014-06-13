@@ -203,6 +203,7 @@ var_dump($defaultTld);
             $parsedString = $IdnaConverter->encode(end($matches));
 var_dump($matches);
 var_dump($parsedString);
+var_dump($this->tldList['content']);
             foreach ($this->tldList['content'] as $tldgroup => $tlds) {
                 foreach ($tlds as $tld) {
 var_dump($tld);
@@ -266,7 +267,7 @@ var_dump($tld);
             if ($this->throwExceptions) {
                 throw $e;
             }
-
+var_dump('333333333333333333333333333333333333333333333');
             $Result = new Result();
             $Result->error = $e->getMessage();
         }
