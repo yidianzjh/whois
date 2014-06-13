@@ -343,6 +343,7 @@ var_dump('77777777777777777777777777777777777777');
 
         if ($content === false) {
             if (! $existFile) {
+var_dump('999999999999999999999999999999999999999999999');
                 throw \Novutec\DomainParser\AbstractException::factory('Connect', 'Could not catch file from server.');
             }
 
