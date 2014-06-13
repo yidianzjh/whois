@@ -70,7 +70,7 @@ class Socket extends AbstractAdapter
         } else {
             $lookupString = str_replace('%domain%', $query->idnFqdn, $config['format']);
         }
-
+var_dump($lookupString);
         $send = fwrite($this->sock, $lookupString . "\r\n");
 
         if ($send !== strlen($lookupString . "\r\n")) {
