@@ -36,14 +36,14 @@ while (1)
 {
 
     /******daemon******/
-    $letterArr = array('c','a','b','d','e','f','g','h','i','j','k',
+    $letterArr = array('a','b','c','d','e','f','g','h','i','j','k',
         'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-    $domainSuffixArr = array('.nl',);
-//    '.com','.net','.org','.cc','.co','.info','.biz','.ee','.cn','.gg','.bb',);
+    $domainSuffixArr = array('.be','.biz','.cc','.cn','.com','.co','.cz','.ee',
+        '.gg','.gl','info','.lc','.ms','.net','.nl','.org','.vg',);
     $charArr = $letterArr;
     shuffle($charArr);
     shuffle($domainSuffixArr);
-    searchDomain('', 1, 3, $charArr, $domainSuffixArr);
+    searchDomain('', 1, 2, $charArr, $domainSuffixArr);
     exit;
 }
 
