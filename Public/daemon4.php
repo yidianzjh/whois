@@ -39,30 +39,31 @@ while (1)
     $letterArr = array('a','b','c','d','e','f','g','h','i','j','k',
         'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
     $domainSuffixArr = array('.com','.net','.org','.cc','.co','.co');
-//    ,'.cn','.info','.biz','.gg','.bb','.ee');
     $charArr = $letterArr;
     shuffle($charArr);
     shuffle($domainSuffixArr);
-    foreach ($charArr as $domainName_1)
+    searchDomain('', 1, 2, $charArr, $domainSuffixArr);
+    exit;
+}
+
+function searchDomain($domainName, $i, $n, $charArr, $domainSuffixArr)
+{
+    foreach ($charArr as $char)
     {
-        foreach ($charArr as $domainName_2)
+        searchDomainSub($domainName.$char, $domainSuffixArr);
+        if ($i < $n)
         {
-            foreach ($charArr as $domainName_3)
-            {
-                foreach ($charArr as $domainName_4)
-                {
-                    foreach ($domainSuffixArr as $domainSuffix)
-                    {
-                        $domainName = $domainName_1.$domainName_2
-                            .$domainName_3.$domainName_4.$domainSuffix;
-                        $publicParams['DomainName'] = $domainName;
-                        $publicParams['api_action'] = 'Whois.Search.Search';
-                        curl($publicParams);
-                    }
-                }
-            }
+            searchDomain($domainName.$char, $i+1, $n, $charArr, $domainSuffixArr);
         }
     }
+}
 
-    exit;
+function searchDomainSub($domainName, $domainSuffixArr)
+{
+    foreach ($domainSuffixArr as $domainSuffix)
+    {
+        $publicParams['DomainName'] = $domainName.$domainSuffix;
+        $publicParams['api_action'] = 'Whois.Search.Search';
+        curl($publicParams);
+    }
 }
