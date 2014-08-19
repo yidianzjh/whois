@@ -33,6 +33,7 @@ class SearchController extends Controller
         $domainInfoModel = new $domainInfoModelName();
         $where['name'] = $domainName;
         $DI = $domainInfoModel->where($where)->find();
+        $DI = false;
         if ($DI)
         {
             if ((time() - intval($DI['update_time'])) > 3600*24*7)
@@ -69,7 +70,7 @@ class SearchController extends Controller
             $sqlData['name'] = $data['domain_name'];
             $sqlData['create_time'] = time();
             $sqlData['update_time'] = time();
-            $domainInfoModel->apiCreate($sqlData);
+//            $domainInfoModel->apiCreate($sqlData);
             return ($data);
         }
     }

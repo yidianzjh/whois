@@ -46,6 +46,8 @@ class DomainInfo
     public function _url($Date)
     {
         $ch = curl_init();
+        var_dump('_____________________________11111111'.__FILE__);
+
         //$timeout = 5;
         curl_setopt ($ch, CURLOPT_URL, "$Date");
         curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);

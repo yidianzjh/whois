@@ -89,7 +89,8 @@ class Config
         if ($tld !== '' && isset($this->config[$tld])) {
             $template = strtolower($tld);
         }
-        
+        var_dump($this->config['com']);
+//        exit;
         return array(
                 'server' => isset($this->config[$template]['server']) ? $this->config[$template]['server'] : '', 
                 'port' => isset($this->config[$template]['port']) ? $this->config[$template]['port'] : 43, 

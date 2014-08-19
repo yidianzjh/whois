@@ -72,7 +72,7 @@ class Socket extends AbstractAdapter
         }
 
         $send = fwrite($this->sock, $lookupString . "\r\n");
-
+var_dump('____________________11'.__FILE__);
         if ($send !== strlen($lookupString . "\r\n")) {
             throw \Novutec\WhoisParser\AbstractException::factory('WriteError', 'Error while sending data (' .
                      $send . '/' . strlen($lookupString . "\r\n") . ')');
@@ -100,7 +100,8 @@ class Socket extends AbstractAdapter
         if (is_array($this->proxyList)) {
             $rawdata = preg_replace('/^HTTP\/1\.1 200.+\n/', '', $rawdata);
         }
-
+        var_dump('____________rawdata____________');
+var_dump($rawdata);exit;
         return str_replace("\r", '', $rawdata);
     }
 
@@ -113,6 +114,7 @@ class Socket extends AbstractAdapter
      */
     private function connect($config)
     {
+        var_dump($config);
         $parsed_socket = parse_url('tcp://' . $config['server']);
 
         if (isset($parsed_socket['port'])) {
@@ -133,6 +135,7 @@ class Socket extends AbstractAdapter
         }
 
         if (! is_resource($this->sock)) {
+            var_dump('____________________22______________'.__FILE__);
             throw \Novutec\WhoisParser\AbstractException::factory('ConnectError', 'Unable to connect to ' .
                      $config['server'] . ':' . $config['port'] .
                      ' or missing configuration for this template.');

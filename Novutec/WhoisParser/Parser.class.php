@@ -189,7 +189,7 @@ class Parser
             }
             
             $this->prepare($query);
-
+var_dump($this->Query);
             if (isset($this->Query->ip)) {
                 $config = $this->Config->get('iana');
             } else {
@@ -285,7 +285,8 @@ class Parser
         
         $Config = $this->Config->getCurrent();
         $Adapter = AbstractAdapter::factory($Config['adapter']);
-
+var_dump($Adapter);
+        var_dump($this->rawdata);
         if ($Adapter instanceof AbstractAdapter) {
             $this->rawdata = strip_tags($Adapter->call($this->Query, $Config));
             $this->parse();
